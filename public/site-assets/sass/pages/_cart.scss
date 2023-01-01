@@ -1,0 +1,455 @@
+@use "../abstracts/abstracts_all" as *;
+
+/* Cart
+=======================*/
+.cat-number {
+  display: inline-flex;
+  box-sizing: border-box;
+  vertical-align: middle;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+  margin-inline-end: 10px;
+  @include border_radius(3px);
+  a {
+    padding: 0;
+    background-color: #fff;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    color: $main_color;
+    text-align: center;
+    font-size: 13px;
+    i {
+      line-height: 45px;
+    }
+  }
+  input {
+    width: 45px;
+    height: 45px;
+    margin: 0;
+    border-width: 0 1px 0 1px;
+    padding-left: 5px;
+    padding-right: 5px;
+    @include border_radius(0);
+    box-shadow: none;
+    text-align: center;
+    &:hover,
+    &:focus {
+      border-width: 0 1px 0 1px;
+    }
+  }
+}
+.cart_btn {
+  position: fixed;
+  inset-inline-end: 25px;
+  bottom: 25px;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  background: $second_color;
+  z-index: 9998;
+  padding: 10px;
+  @include border_radius(50%);
+  &::after,
+  &::before {
+    width: 50px;
+    height: 50px;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    content: "";
+    position: absolute;
+    @include border_radius(50%);
+    @include box_shadow(0, 0, 0, 0, rgba($second_color, 0.6));
+    @include transform(translate(-50%, -50%));
+    @include transition(0.4s, all, linear);
+    animation: ripple 3s infinite;
+    animation-delay: 0.9s;
+  }
+
+  &::after {
+    animation-delay: 0.6s;
+  }
+  button {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 26px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    color: #fff;
+    z-index: 1;
+    @include border_radius(50%);
+    span {
+      position: absolute;
+      top: -25px;
+      inset-inline-end: -10px;
+      width: 25px;
+      height: 25px;
+      line-height: 25px;
+      background: $main_color;
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      @include border_radius(50%);
+    }
+  }
+}
+
+@-webkit-keyframes ripple {
+  70% {
+    @include box_shadow(0, 0, 0, 40px, rgba(#fff, 0));
+  }
+  100% {
+    @include box_shadow(0, 0, 0, 0, rgba(#fff, 0));
+  }
+}
+@keyframes ripple {
+  70% {
+    @include box_shadow(0, 0, 0, 40px, rgba(#fff, 0));
+  }
+  100% {
+    @include box_shadow(0, 0, 0, 0, rgba(#fff, 0));
+  }
+}
+
+.cart_box {
+  position: fixed;
+  background-color: #fff;
+  top: 0;
+  bottom: 0;
+  inset-inline-end: -320px;
+  width: 100%;
+  max-width: 290px;
+  height: 100%;
+  z-index: 9998;
+  @include transition(0.3s all linear);
+  @include box_shadow(-5px, 0px, 15px, 0px, rgba($main_color, 0.08));
+  [dir = "rtl"] &{
+    @include box_shadow(5px, 0px, 15px, 0px, rgba($main_color, 0.08));
+  }
+  &.move {
+    inset-inline-end: 0;
+    &::before {
+      content: " ";
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0);
+      inset-inline-end: 0;
+      top: 0;
+      z-index: -1;
+    }
+  }
+
+  .title {
+    text-transform: uppercase;
+    color: $main_color;
+    padding: 15px;
+    font-size: 16px;
+    text-align: start;
+    display: block;
+    width: 100%;
+    position: relative;
+    font-weight: $weight_bold;
+    line-height: 30px;
+    i {
+      margin-inline-end: 5px;
+    }
+    .icon {
+      position: absolute;
+      top: 15px;
+      inset-inline-end: 10px;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+}
+.cart-content-footer {
+  position: absolute;
+  inset-inline-end: 0;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  padding: 25px 15px;
+  border-top: 1px solid #f1f1f1;
+  .total {
+    text-align: center;
+    font-size: 22px;
+    font-weight: $weight_bold;
+    color: $main_color;
+    margin-bottom: 15px;
+  }
+  .link {
+    font-size: 14px;
+    text-transform: uppercase;
+    i {
+      margin-inline-end: 3px;
+    }
+    &:last-child {
+      background: $second_color;
+    }
+  }
+}
+.prod_list {
+  display: block;
+  overflow: hidden;
+  padding: 12px;
+  border-top: 1px solid #eee;
+  position: relative;
+  z-index: 99;
+  @include flex(row, flex-start, center);
+  img {
+    object-fit: contain;
+    height: 60px;
+    width: 60px;
+    min-width: 60px;
+    margin: 0;
+    margin-inline-end: 10px;
+  }
+  .prod_list-info {
+    display: block;
+    position: relative;
+    font-weight: $weight_bold;
+    width: 100%;
+
+    a {
+      display: block;
+      position: relative;
+      line-height: 25px;
+      margin-bottom: 0;
+      color: $second_color;
+      font-size: 16px;
+      font-weight: $weight_bold;
+    }
+    span {
+      display: inline-block;
+      line-height: 15px;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      border-inline-end: 1px solid $second_color;
+      padding-inline-end: 5px;
+      margin-inline-end: 5px;
+      &.num {
+        border-inline-end: 0;
+      }
+    }
+    button {
+      position: absolute;
+      height: 20px;
+      width: 20px;
+      border: 0;
+      color: #fafafa;
+      font-size: 12px;
+      background-color: $third_color;
+      top: 0;
+      bottom: 0;
+      inset-inline-end: -5px;
+      margin: auto;
+      z-index: 9999;
+      padding: 0;
+      text-align: center;
+      @include border_radius(50%);
+    }
+  }
+}
+.cart_item {
+  position: relative;
+  @include flex(row, flex-start, center);
+  background-color: #fff;
+  @include border_radius(5px);
+  margin-bottom: 15px;
+  img {
+    margin: 0;
+    padding: 5px;
+    width: 180px;
+  }
+  .cart_item_details {
+    width: 100%;
+    border-left: 1px solid #e7e7e7;
+    padding: 15px;
+    padding-inline-start: 25px;
+    .form-group {
+      margin: 0;
+    }
+    label {
+      display: block;
+      margin-top: 0;
+    }
+    .form-control {
+      padding: 0 5px;
+    }
+    .cat-number {
+      display: inline-flex;
+      width: 100%;
+      @include mediaquery(max, tablet) {
+        width: 140px;
+        display: flex;
+      }
+    }
+  }
+  .price {
+    color: $second_color;
+    font-size: 16px;
+    font-weight: $weight_xbold;
+    margin: 5px 0;
+    display: block;
+    letter-spacing: 1px;
+  }
+  .title {
+    color: $main_color;
+    font-size: 18px;
+    font-weight: $weight_bold;
+    margin: 0;
+    display: block;
+    letter-spacing: 1px;
+  }
+  .icon {
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    inset-inline-end: 10px;
+    top: 10px;
+  }
+  .data_info {
+    background-color: #f1f1f1;
+    padding: 0px 10px;
+    margin-top: -5px;
+  }
+  @include mediaquery(max, mobile) {
+    flex-direction: column;
+    .cart_item_details {
+      width: 100%;
+      border-left: 0;
+      border-top: 1px solid #e7e7e7;
+      padding: 15px;
+      padding-inline-start: 25px;
+    }
+  }
+}
+.block-item {
+  position: relative;
+  margin-bottom: 25px;
+  background-color: #fff;
+  @include border_radius(5px);
+  overflow: hidden;
+  .form-title {
+    position: relative;
+    margin: 0;
+    font-weight: $weight_bold;
+    font-size: 19px;
+    line-height: 30px;
+    padding: 15px;
+    color: $main_color;
+    background-color: #fff;
+    border-bottom: 1px solid #e7e7e7;
+    text-transform: capitalize;
+    img {
+      display: inline-block;
+      margin-inline-end: 5px;
+      width: 50px;
+      vertical-align: middle;
+    }
+    .link {
+      position: absolute;
+      inset-inline-end: 10px;
+      margin: 0;
+      top: 15px;
+      line-height: 30px;
+    }
+    &.white {
+      color: $second_color;
+      background-color: #fff;
+      border-bottom: 1px solid #e0e0e0;
+    }
+  }
+  form {
+    margin: 0;
+  }
+  .promo_form {
+    position: relative;
+    margin: 0 25px 25px;
+    .link {
+      position: absolute;
+      inset-inline-end: 0;
+      bottom: 0;
+      margin: 0;
+      height: 45px;
+    }
+  }
+  .link {
+    margin: 25px auto 0;
+    display: block;
+    max-width: 140px;
+  }
+  hr {
+    margin-bottom: 0;
+  }
+  .cart_total {
+    padding: 15px;
+    text-align: center;
+    .total {
+      color: $second_color;
+      text-transform: uppercase;
+      font-size: 18px;
+      margin: 0;
+      span {
+        font-size: 22px;
+        display: block;
+      }
+    }
+    .link {
+      margin-top: 15px;
+    }
+  }
+  .cart_item {
+    border-bottom: 1px solid #e7e7e7;
+    @include border_radius(0px);
+    margin-bottom: 0px;
+    img {
+      width: 120px;
+    }
+    .cart_item_details {
+      @include mediaquery(max, mobile) {
+        border-top: 0;
+        .form-group {
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        label {
+          margin: 0;
+          display: inline-block;
+        }
+      }
+    }
+  }
+  .ship_form {
+    margin: 0;
+    padding: 0 5px;
+    text-align: start;
+    .form-group {
+      margin: 0 0 15px;
+    }
+  }
+  .total_info {
+    li {
+      @include flex(row, space-between, center);
+      text-transform: uppercase;
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: $main_color;
+    }
+    span {
+      color: $third_color;
+      font-weight: $weight_bold;
+    }
+  }
+}

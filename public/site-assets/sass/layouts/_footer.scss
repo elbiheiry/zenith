@@ -1,0 +1,213 @@
+@use "../abstracts/abstracts_all" as *;
+
+/* Footer
+=====================*/
+footer {
+  position: relative;
+  z-index: 9997;
+  background-color: $main_color;
+  @include mediaquery(max, mobile) {
+    padding-top: 0;
+  }
+  .container {
+    z-index: 999;
+  }
+  h3 {
+    margin: 20px 0;
+    letter-spacing: 1px;
+    font-size: 16px;
+    font-weight: $weight_bold;
+    position: relative;
+    text-transform: uppercase;
+    line-height: 30px;
+    color: #fff;
+    &::before {
+      content: "";
+      background-color: $second_color;
+      position: absolute;
+      inset-inline-start: 0;
+      bottom: -5px;
+      margin: auto;
+      height: 3px;
+      width: 40px;
+    }
+  }
+}
+.contact_info li {
+  margin-bottom: 15px;
+  padding: 0;
+  @include flex(row, flex-start, center);
+  i {
+    min-width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    background-color: #fff2;
+    text-align: center;
+    @include border_radius(3px);
+    margin-inline-end: 15px;
+    color: #fff;
+  }
+  a {
+    display: inline-block;
+    color: #fff;
+    padding: 5px 0;
+    line-height: 20px;
+    font-size: 15px;
+    @include transition(0.4s linear color);
+  }
+}
+ul.quick_links {
+  &.row {
+    margin: 0;
+  }
+  li {
+    display: block;
+    position: relative;
+    margin-bottom: 5px;
+    padding-inline-start: 20px;
+    @include mediaquery(max, mobile) {
+      min-width: 49%;
+      display: inline-block;
+    }
+    &::before {
+      height: 25px;
+      line-height: 25px;
+      color: #fff9;
+      position: absolute;
+      content: "\f105";
+      inset-inline-start: 0;
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
+      [dir="rtl"] & {
+        @include transform(rotateY(-180deg));
+      }
+    }
+    a {
+      display: inline-block;
+      color: #fff;
+      line-height: 25px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: capitalize;
+      @include transition(0.4s linear color);
+      &:hover {
+        color: $second_color;
+      }
+    }
+  }
+}
+.payment {
+  li {
+    img {
+      margin: 0;
+      background-color: #fff;
+      padding: 10px;
+      width: 60px;
+      height: 40px;
+      object-fit: contain;
+      @include border_radius(3px);
+    }
+    @include mediaquery(max, desktop) {
+      img {
+        width: 64px;
+      }
+    }
+  }
+}
+.subscribe_form {
+  @include flex(row, space-between, center);
+  .icon {
+    min-width: 45px;
+    margin: 0;
+    margin-inline-start: 10px;
+  }
+}
+.copyrights {
+  text-align: center;
+  color: #fff7;
+  font-size: 14px;
+  padding: 15px 15px 10px;
+  border-top: 1px solid #fff2;
+  margin-top: 25px;
+  @include mediaquery(max, mobile) {
+    margin-top: 15px;
+  }
+  .col-12 {
+    @include flex(row, space-between, center);
+    @include mediaquery(max, tablet) {
+      flex-direction: column;
+    }
+  }
+  p {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    word-spacing: 5px;
+  }
+  .power {
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 12px;
+    a {
+      display: inline-block;
+      color: #fece4e;
+    }
+    img {
+      display: inline-block;
+      margin: 0 3px;
+    }
+  }
+}
+
+.up_btn {
+  position: fixed;
+  inset-inline-start: 15px;
+  bottom: 45px;
+  opacity: 0;
+  margin: auto;
+  font-size: 16px;
+  z-index: 9998;
+  @include transition(0.4s linear all);
+  &.show {
+    opacity: 1;
+    bottom: 15px;
+  }
+}
+
+/* Social
+=======================*/
+.social {
+  margin-top: 20px;
+  a {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0px;
+    color: #fff;
+    display: block;
+    text-align: center;
+    margin-inline-end: 5px;
+    @include border_radius(5px);
+    &:hover {
+      i {
+        color: #fff;
+      }
+    }
+    i {
+      color: #fff;
+      line-height: 35px;
+      font-size: 16px;
+      display: block;
+    }
+  }
+}
+.facebook_bc {
+  background-color: #1877f2;
+}
+.linkedin_bc {
+  background-color: #0a66c2;
+}
+.twitter_bc {
+  background-color: #1da1f2;
+}

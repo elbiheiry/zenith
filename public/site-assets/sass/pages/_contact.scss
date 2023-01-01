@@ -1,0 +1,75 @@
+@use "../abstracts/abstracts_all" as *;
+
+/* Contact
+=======================*/
+.contact {
+  & > .row {
+    max-width: 1140px;
+    margin: auto;
+  }
+  .contact_details {
+    padding: 20px;
+    background-color: $main_color;
+    @include flex(column, center, flex-start);
+    h3 {
+      margin: 0 0 40px;
+      letter-spacing: 1px;
+      font-size: 24px;
+      font-weight: $weight_bold;
+      position: relative;
+      text-transform: uppercase;
+      line-height: 30px;
+      color: #fff;
+      &::before {
+        content: "";
+        background-color: $second_color;
+        position: absolute;
+        inset-inline-start: 0;
+        bottom: -10px;
+        margin: auto;
+        height: 3px;
+        width: 40px;
+      }
+    }
+  }
+  .contact_form {
+    padding: 30px;
+    background-color: #fff;
+    h3 {
+      margin: 0 0 15px;
+      letter-spacing: 1px;
+      font-size: 28px;
+      font-weight: $weight_bold;
+      position: relative;
+      text-transform: uppercase;
+      line-height: 30px;
+      color: $main_color;
+      &::before {
+        content: "";
+        background-color: $second_color;
+        position: absolute;
+        inset-inline-start: 0;
+        bottom: -10px;
+        margin: auto;
+        height: 3px;
+        width: 40px;
+      }
+    }
+    .link {
+      margin-top: 5px;
+    }
+  }
+  @include mediaquery(max, mobile) {
+    .row {
+      margin: auto;
+      max-width: 100%;
+    }
+    .contact_details,
+    .contact_form {
+      padding: 15px 10px;
+      h3 {
+        font-size: 18px;
+      }
+    }
+  }
+}

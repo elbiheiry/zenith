@@ -1,0 +1,72 @@
+@use "../abstracts/abstracts_all" as *;
+
+/* Login
+=====================*/
+.login_wrap {
+  .register {
+    border-inline-start: 1px solid #f1f1f1;
+    padding-inline-start: 60px;
+    form {
+      max-width: 100%;
+    }
+    @include mediaquery(max, l_desktop) {
+      padding-inline-start: 30px;
+    }
+    @include mediaquery(max, desktop) {
+      padding-inline-start: 15px;
+      padding-top: 30px;
+      margin-top: 30px;
+      border-inline-start: 0;
+      border-top: 1px solid #f1f1f1;
+      form {
+        max-width: 576px;
+      }
+    }
+  }
+  form {
+    max-width: 440px;
+    width: 100%;
+    margin: auto;
+    @include mediaquery(max, desktop) {
+      max-width: 576px;
+    }
+    h3 {
+      text-align: start;
+      color: $main_color;
+      font-weight: $weight_bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 18px;
+    }
+  }
+  .txt_link {
+    color: $second_color;
+    &.w-100 {
+      display: block;
+      margin-top: 25px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+  p {
+    margin: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+    opacity: 50%;
+    letter-spacing: 1px;
+  }
+  .request {
+    form {
+      background-color: #fff;
+      padding: 25px;
+      border-radius: 5px;
+      max-width: 100%;
+    }
+  }
+  .static p {
+    text-transform: lowercase;
+    font-size: 16px;
+    line-height: 25px;
+    opacity: 100%;
+  }
+}
