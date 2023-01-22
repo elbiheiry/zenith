@@ -233,7 +233,8 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'JenssegersDate' => Jenssegers\Date\Date::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
-        'Socialite' => Laravel\Socialite\Facades\Socialite::class
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Aramex' => Octw\Aramex\Aramex::class
     ],
 
 ];

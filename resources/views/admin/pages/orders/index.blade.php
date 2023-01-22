@@ -50,6 +50,10 @@
                                             <td>{{ $order['total'] }}</td>
                                             <td>
                                                 <a class="custom-btn"
+                                                    href="{{ route('admin.shippment.index', ['id' => $order['order_no']]) }}">
+                                                    <i class="fa fa-info"></i> Shipping
+                                                </a>
+                                                <a class="custom-btn blue-bc"
                                                     href="{{ route('admin.orders.show', ['order_no' => $order['order_no']]) }}">
                                                     <i class="fa fa-eye"></i> Show
                                                 </a>

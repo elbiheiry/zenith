@@ -45,13 +45,24 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label> {{ locale() == 'en' ? 'City' : 'المدينة' }} <sup>*</sup> </label>
-                                    <input class="form-control" type="text" name="city" />
+                                    {{-- <input class="form-control" type="text" name="city" /> --}}
+                                    <select class="form-control" name="city">
+                                        @foreach ($cities as $city)
+                                            <option value="{{ $city }}">{{ $city }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label>{{ locale() == 'en' ? 'State / Province' : 'المحافظه' }} <sup>*</sup> </label>
                                     <input class="form-control" type="text" name="state" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-group">
+                                    <label>ZIP code <sup>*</sup> </label>
+                                    <input class="form-control" type="text" name="zip_code" />
                                 </div>
                             </div>
                             <div class="col-md-12 col-sm-12">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\{
     ProgramController , RefundController , RegisterationController , SchoolController , SettingController , ShippingController , 
     SliderController , SocialLinkController , TermController , UserController , ProductSpecificationController , AccessoryController ,
     AccessoryImageController , AccessorySpecificationController,
+    AramexController,
     BundleAccessoryController,
     BundleController,
     ContentController,
@@ -136,6 +137,11 @@ Route::middleware('auth:web')->group(function () {
         Route::get('/' , [OrderController::class , 'index'])->name('index');
         Route::get('/show/{order_no}' , [OrderController::class , 'show'])->name('show');
         Route::delete('/destroy/{id}' , [OrderController::class , 'destroy'])->name('delete');
+    });
+
+    Route::prefix('shippment')->name('shippment.')->controller(AramexController::class)->group(function (){
+        Route::get('/{id}' , 'index')->name('index');
+        Route::post('/shipping/{id}' , 'store')->name('store');
     });
 
     /**

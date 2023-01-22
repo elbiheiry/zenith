@@ -20,7 +20,8 @@
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "mcamara/laravel-localization": "^1.7",
-        "myfatoorah/laravel-package": "^2.0"
+        "myfatoorah/laravel-package": "^2.0",
+        "octw/aramex": "^1.2"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

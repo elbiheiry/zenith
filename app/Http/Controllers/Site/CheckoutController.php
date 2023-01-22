@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use League\Flysystem\Adapter\Local;
 use Locale;
+use Octw\Aramex\Aramex;
 
 class CheckoutController extends Controller
 {
@@ -20,6 +21,8 @@ class CheckoutController extends Controller
 
     public function index()
     {
+        $data = Aramex::fetchCities('SA');
+        $cities = $data->Cities->string;
         $items = \Cart::getContent();
         foreach ($items as $item) {
             if ($item->associatedModel == 'product') {
@@ -31,7 +34,7 @@ class CheckoutController extends Controller
         
         $user = auth()->guard('site')->user();
 
-        return view('site.pages.checkout.index' ,compact('items' , 'user'));
+        return view('site.pages.checkout.index' ,compact('items' , 'user' , 'cities'));
     }
 
     public function store(Request $request)
@@ -43,6 +46,7 @@ class CheckoutController extends Controller
             'city' => ['required' , 'string' , 'max:255'],
             'state' => ['required' , 'string' , 'max:255'],
             'address' => ['required' , 'string' , 'max:255'],
+            'zip_code' => ['required' , 'numeric'],
             'terms' => ['accepted']
         ] , [
             'terms.accepted' => locale() == 'en' ? 'Please accept our terms and conditions before checkout' : 'برجاء الموافقة علي الشروط والاحكام قبل المتابعه'
@@ -53,7 +57,8 @@ class CheckoutController extends Controller
             'city' => locale() == 'en' ? 'City' : 'المدينة',
             'state' => locale() == 'en' ? 'State / Province' : 'المحافظه',
             'address' => locale() == 'en' ? 'Address' : 'العنوان',
-            'terms' => Locale() == 'en' ?  'Terms and conditions' : 'الشروظ والاحكام'
+            'terms' => Locale() == 'en' ?  'Terms and conditions' : 'الشروظ والاحكام',
+            'zip_code' => 'Zip code'
         ]);
 
         if ($validator->fails()) {
