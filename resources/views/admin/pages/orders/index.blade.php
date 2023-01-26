@@ -24,6 +24,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="table-responsive-lg">
+                            <!-- datatable -->
                             <table class="table table-bordered" id="datatable" style="width:100%">
                                 <thead>
                                     <tr>
