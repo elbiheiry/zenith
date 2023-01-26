@@ -24,7 +24,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="table-responsive-lg">
-                            <table class="table table-bordered" style="width:100%">
+                            <table class="table table-bordered" id="datatable" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>#</th>
@@ -33,6 +33,7 @@
                                         <th>Phone</th>
                                         <th>Email</th>
                                         <th>Total</th>
+                                        <th>Created at</th>
                                         <th>Options</th>
                                     </tr>
                                 </thead>
@@ -48,6 +49,7 @@
                                             <td>{{ $order['phone'] }}</td>
                                             <td>{{ $order['email'] }}</td>
                                             <td>{{ $order['total'] }}</td>
+                                            <td>{{ $order['created_at'] }}</td>
                                             <td>
                                                 <a class="custom-btn"
                                                     href="{{ route('admin.shippment.index', ['id' => $order['order_no']]) }}">

@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ aurl('vendor/bootstrap/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
         integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/dataTables.bootstrap5.min.css" />
 
     <!-- Site Css
         ====================================-->
@@ -83,9 +84,7 @@
     <!-- JS Base And Vendor
         ==========================================-->
     <script src="{{ aurl('vendor/jquery/jquery.js') }}"></script>
-    <script src="{{ aurl('vendor/popper/popper.min.js') }}">
-        {{-- integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"> --}}
-    </script>
+    <script src="{{ aurl('vendor/popper/popper.min.js') }}"></script>
     <script src="{{ aurl('vendor/bootstrap/bootstrap.min.js') }}"></script>
     <script src="{{ aurl('vendor/bootstrap-notify/bootstrap-notify.min.js') }}"></script>
     <script src="{{ aurl('vendor/tagsinput/js/tagsinput.js') }}"></script>
@@ -96,6 +95,13 @@
     <script src="{{ aurl('vendor/file/file.js') }}"></script>
     <script src="{{ aurl('js/main.js') }}"></script>
     <script src="{{ aurl('js/admin.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#datatable').DataTable();
+        });
+    </script>
     @stack('js')
 </body>
 

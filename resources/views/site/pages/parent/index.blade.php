@@ -64,7 +64,7 @@
         </div>
         <!--End Container-->
     </section>
-    
+
     <section class="static">
         <div class="container">
             <div class="row justify-content-center align-items-center">
@@ -92,7 +92,7 @@
         </div>
         <!--End Container-->
     </section>
-    
+
     <section class="colored partners">
         <div class="container">
             <div class="row position-relative">
@@ -105,8 +105,7 @@
                     $x = 60;
                 @endphp
                 @foreach ($schools['data'] as $school)
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-6" data-aos="fade-up"
-                        data-aos-delay="{{ $x }}">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-6" data-aos="fade-up" data-aos-delay="{{ $x }}">
                         <div class="partner_item">
                             <img src="{{ $school['image_path'] }}" alt="" />
                         </div>

@@ -88,76 +88,18 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="30">
                     <div class="section_title text-center">
-                        <h3>Benefits For Parents</h3>
+                        <h3>{{ locale() == 'en' ? 'Benefits For Parents' : 'الفوائد للاّباء ' }}</h3>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/B7R1g5JAK7SPib7piP6qEqJckm9bzd6Ppo47oy6h.png">
-                        <h3>PURCHASE OF PRECONFIGURED APPLE DEVICES &amp; ACCESSORIES</h3>
+                @foreach ($offers['data'] as $offer)
+                    <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="60">
+                        <div class="benefit small tilt">
+                            <img src="{{ $offer['image_path'] }}" />
+                            <h3>{{ $offer['title_' . locale()] }}</h3>
+                        </div>
+                        <!--End Benefit-->
                     </div>
-                    <!--End Benefit-->
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/ruvTgBZw5mf087Ue5j2rB1QLwhGeOCu3OlrzFdEe.png">
-                        <h3>ONLINE PAYMENT PLATFORM.</h3>
-                    </div>
-                    <!--End Benefit-->
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/poPG2QrCQhk2cVcDSFYhLqrArggehxyFqmyPSNoj.png">
-                        <h3>FINANCIAL INSTALLMENT SERVICES.</h3>
-                    </div>
-                    <!--End Benefit-->
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/i4FLNSnCYoQnYeTJWkUYODV9rdAul1qLgxtQFKg6.png">
-                        <h3>DOOR TO DOOR DELIVERY.</h3>
-                    </div>
-                    <!--End Benefit-->
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt"
-                        style="will-change: transform; transform: perspective(900px) rotateX(0deg) rotateY(0deg);">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/5MDamqnP02YekfX4Gi6XRzHjYinCK9jwVCrH3twS.png">
-                        <h3>PRIVACY AND SECURITY</h3>
-                    </div>
-                    <!--End Benefit-->
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt"
-                        style="will-change: transform; transform: perspective(900px) rotateX(0deg) rotateY(0deg);">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/JnFHNaTei9skPkBQTjuQhhgFDjIXhR8TIcABqKqI.png">
-                        <h3>PARENT DEVICE-OWNERSHIP.</h3>
-                    </div>
-                    <!--End Benefit-->
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/2vkuodioMof22BJ3KI2l1FxTPod4p4MHvWd7PchS.png">
-                        <h3>CUSTOMER SUPPORT.</h3>
-                    </div>
-                    <!--End Benefit-->
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="60">
-                    <div class="benefit small tilt">
-                        <img
-                            src="https://zenith.brandbourne.com/storage/offers/sIAtAgXDcCr3hNLgxd4h3BF6EH6GNfHEsioVjhxt.png">
-                        <h3>END OF USE RESET TO COMMERCIAL SETTING.</h3>
-                    </div>
-                    <!--End Benefit-->
-                </div>
-
+                @endforeach
             </div>
             <!--End Row-->
         </div>
@@ -168,14 +110,14 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 aos-init aos-animate" data-aos="fade-up" data-aos-delay="30">
                     <div class="section_title text-center">
-                        <h3>How it works</h3>
+                        <h3>{{ locale() == 'en' ? 'How it works' : 'كيف تعمل ' }}</h3>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
 
                         <div class="cont">
-                           <img src="{{ surl('images/step1.png') }}" />
+                            <img src="{{ surl('images/step1.png') }}" />
                             <h3>CREATE ACCOUNT</h3>
                             <p>Fill your contact details with the school registered</p>
                         </div>
@@ -185,7 +127,7 @@
                     <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
 
                         <div class="cont">
-                           <img src="{{ surl('images/step2.png') }}" />
+                            <img src="{{ surl('images/step2.png') }}" />
                             <h3>CHOOSE PRODUCT</h3>
                             <p>Choose the devices, accessories, and school bundle</p>
                         </div>
@@ -195,7 +137,7 @@
                     <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
 
                         <div class="cont">
-                           <img src="{{ surl('images/step3.png') }}" />
+                            <img src="{{ surl('images/step3.png') }}" />
                             <h3>PAYMENT</h3>
                             <p>Pay online via desired Method</p>
                         </div>
@@ -205,7 +147,7 @@
                     <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
 
                         <div class="cont">
-                           <img src="{{ surl('images/step4.png') }}" />
+                            <img src="{{ surl('images/step4.png') }}" />
                             <h3>WE PROCESS</h3>
                             <p>Door to Door Delivery</p>
                         </div>
@@ -215,7 +157,7 @@
                     <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
 
                         <div class="cont">
-                           <img src="{{ surl('images/step5.png') }}" />
+                            <img src="{{ surl('images/step5.png') }}" />
                             <h3>PRODUCT DEVLIVERED</h3>
                             <p>Start Learning journey with preconfigured devices</p>
                         </div>
@@ -241,7 +183,8 @@
                         @if (auth()->guard('site')->guest())
                             <a href="{{ route('site.school') }}" class="link aos-init aos-animate" data-aos="fade-up"
                                 data-aos-delay="90">
-                                <span> {{ locale() == 'en' ? 'Register Your School' : 'قم بتسجيل مدرستك الاّن ' }} ! </span>
+                                <span> {{ locale() == 'en' ? 'Register Your School' : 'قم بتسجيل مدرستك الاّن ' }} !
+                                </span>
                             </a>
                         @endif
                     </div>
