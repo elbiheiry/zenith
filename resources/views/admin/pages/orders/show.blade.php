@@ -43,11 +43,7 @@
                                         <th>#</th>
                                         <th>Name</th>
                                         <th>Quantity</th>
-                                        @if ($items->associatedModel != 'bundle')
-                                            <th>SKU</th>
-                                        @endif
-
-
+                                        <th>SKU</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,7 +55,7 @@
                                             <td>{{ $x }}</td>
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->quantity }}</td>
-                                            @if ($items->associatedModel != 'bundle')
+                                            @if ($item->associatedModel != 'bundle')
                                                 <td>{{ $item->attributes->sku }}</td>
                                             @endif
                                         </tr>
