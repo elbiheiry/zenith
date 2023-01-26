@@ -23,6 +23,7 @@ class CheckoutController extends Controller
     {
         $data = Aramex::fetchCities('SA');
         $cities = $data->Cities->string;
+        
         $items = \Cart::getContent();
         foreach ($items as $item) {
             if ($item->associatedModel == 'product') {

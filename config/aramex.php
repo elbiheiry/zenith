@@ -41,8 +41,8 @@ return [
 		'UserName'			 	=> 'testingapi@aramex.com',
 		'Password'			 	=> 'R123456789$r',
 		'AccountPin'		 	=> '331421',
-		'AccountEntity'		 	=> 'RUH',
-		'AccountCountryCode'	=> 'SA',
+		'AccountEntity'		 	=> 'AMM',
+		'AccountCountryCode'	=> 'JO',
 		'Version'			 	=> 'v1'
 	],
 
@@ -94,7 +94,7 @@ return [
 	 *	For more information naviagte to Appendix-A (Page: 51) in 
 	 *  https://www.aramex.com/docs/default-source/resourses/resourcesdata/shipping-services-api-manual.pdf
 	 */ 
-	'ProductType' => 'PDX',
+	'ProductType' => 'PPX',
 
 
 	/**
