@@ -142,6 +142,7 @@ Route::middleware('auth:web')->group(function () {
     Route::prefix('shippment')->name('shippment.')->controller(AramexController::class)->group(function (){
         Route::get('/{id}' , 'index')->name('index');
         Route::post('/shipping/{id}' , 'store')->name('store');
+        Route::get('track-shipment/{order_id}' , 'TrackShippment')->name('track');
     });
 
     /**

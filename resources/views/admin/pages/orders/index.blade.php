@@ -52,10 +52,17 @@
                                             <td>{{ $order['total'] }}</td>
                                             <td>{{ $order['created_at'] }}</td>
                                             <td>
-                                                <a class="custom-btn"
-                                                    href="{{ route('admin.shippment.index', ['id' => $order['order_no']]) }}">
-                                                    <i class="fa fa-info"></i> Shipping
-                                                </a>
+                                                @if ($order->shippment)
+                                                    <a class="custom-btn"
+                                                        href="{{ route('admin.shippment.track', ['order_id' => $order['order_no']]) }}">
+                                                        <i class="fa fa-info"></i> Track shippment
+                                                    </a>
+                                                @else
+                                                    <a class="custom-btn"
+                                                        href="{{ route('admin.shippment.index', ['id' => $order['order_no']]) }}">
+                                                        <i class="fa fa-info"></i>Create Shippment
+                                                    </a>
+                                                @endif
                                                 <a class="custom-btn blue-bc"
                                                     href="{{ route('admin.orders.show', ['order_no' => $order['order_no']]) }}">
                                                     <i class="fa fa-eye"></i> Show

@@ -94,7 +94,7 @@ return [
 	 *	For more information naviagte to Appendix-A (Page: 51) in 
 	 *  https://www.aramex.com/docs/default-source/resourses/resourcesdata/shipping-services-api-manual.pdf
 	 */ 
-	'ProductType' => 'PPX',
+	'ProductType' => 'PDX',
 
 
 	/**

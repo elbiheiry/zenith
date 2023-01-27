@@ -12,4 +12,9 @@ class Order extends Model
     protected $fillable = [
         'name','order_no' , 'phone' , 'email' , 'city' , 'state' , 'address' , 'address2' , 'items' , 'total' , 'user_id'  , 'zip_code','status' , 'payment_details'
     ];
+
+    public function shippment()
+    {
+        return $this->hasOne(Shippment::class);
+    }
 }

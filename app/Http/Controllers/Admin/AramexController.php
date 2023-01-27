@@ -44,23 +44,32 @@ class AramexController extends Controller
     	]);
 
         if ($data->error){
-            return failed_validation($data->errors->Message);
+            if ($data->error > 1) {
+                return failed_validation($data->errors[0]->Message);
+            }else{
+                return failed_validation($data->errors->Message);
+            }
+            
         }else{
-          $guid = $data->pickupGUID;
+            $guid = $data->pickupGUID;
+
+            $shippment = $order->shippment()->create([
+                'pickup_id' => $guid
+            ]);
         }
 
         $callResponse = Aramex::createShipment([
             'shipper' => [
-                'name' => 'Ahmed Halawa',
-                'cell_phone' => '+9660540541315',
-                'phone' => '+9660540541315',
-                'email' => 'ahalawa@zenitharabia.com',
-                'city' => 'Riyadh',
-                'country_code' => 'SA',
-                'zip_code'=> $request->zip_code,
-                'line1' => $request->line1,
-                'line2' => $request->line2,
-                'line3' => $request->line3,
+                'name' => 'Steve', 
+                'email' => 'email@users.companies', 
+                'phone'      => '+123456789982',
+                'cell_phone' => '+321654987789',
+                'country_code' => 'JO',
+                'city' => 'Amman',
+                'zip_code' => 10001,
+                'line1' => 'Line1 Details',
+                'line2' => 'Line2 Details',
+                'line3' => 'Line3 Details',
             ],
             'consignee' => [
                 'name' => $order->name,
@@ -85,18 +94,37 @@ class AramexController extends Controller
         ]);
         if (!empty($callResponse->error))
         {
-            dd($callResponse->errors);
-            // foreach ($callResponse->errors as $errorObject) {
-            //   handleError($errorObject->Code, $errorObject->Message);
-            // }
+            return failed_validation($data->errors[0]->Message);
         }
         else {
-          // extract your data here, for example
-          $shipmentId = $callResponse->Shipments->ProcessedShipment->ID;
-          
-          $labelUrl = $callResponse->Shipments->ProcessedShipment->ShipmentLabel->LabelURL;
+            $shipmentId = $callResponse->Shipments->ProcessedShipment->ID;
+            $labelUrl = $callResponse->Shipments->ProcessedShipment->ShipmentLabel->LabelURL;
 
-          dd($shipmentId , $labelUrl);
+            $shippment->update([
+                'shipmentId' => $shipmentId,
+                'labelUrl' => $labelUrl
+            ]);
+
+            return success_response('Shippment created successfully , and ID is : '.$shipmentId);
         }
+    }
+
+    public function TrackShippment($order_id)
+    {
+        $order = Order::where('order_no' , $order_id)->firstOrFail();
+
+        $shipments = [ 
+            $order->shippment->shipmentId
+        ];
+
+
+        $data = Aramex::trackShipments($shipments);
+
+        // if ($data->HasErrors == false){
+        //     $errors = [];
+        // }else {
+        //     $errors = $data->hasErrors;
+        // }
+        return view('admin.pages.aramex.show' ,compact('data'));
     }
 }

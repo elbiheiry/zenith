@@ -29,6 +29,14 @@ if (!function_exists('error_response')) {
             , 400);;
     }
 }
+
+if (!function_exists('success_response')) {
+    function success_response($message)
+    {
+        return response()->json($message, 200);
+    }
+}
+
 if (!function_exists('aurl')) {
     function aurl($path)
     {

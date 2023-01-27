@@ -85,7 +85,7 @@
             </a>
         </li>
         <li
-            class="{{ request()->routeIs('admin.orders.index') || request()->routeIs('admin.orders.show') ? 'active' : '' }}">
+            class="{{ request()->routeIs('admin.shippment.index') || request()->routeIs('admin.shippment.track') || request()->routeIs('admin.orders.index') || request()->routeIs('admin.orders.show') ? 'active' : '' }}">
             <a href="{{ route('admin.orders.index') }}">
                 - Orders
             </a>
