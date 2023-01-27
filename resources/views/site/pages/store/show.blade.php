@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ $product['name_' . locale()] }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -21,11 +24,11 @@
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
                                 <a href="{{ $product['image_path'] }}" class="swiper-slide" data-fancybox="gallery">
-                                    <img src="{{ $product['image_path'] }}" />
+                                    <img src="{{ $product['image_path'] }}" alt="{{ $product['name_' . locale()] }}" />
                                 </a>
                                 @foreach ($images['data'] as $image)
                                     <a href="{{ $image['image_path'] }}" class="swiper-slide" data-fancybox="gallery">
-                                        <img src="{{ $image['image_path'] }}" />
+                                        <img src="{{ $image['image_path'] }}" alt="{{ $product['name_' . locale()] }}" />
                                     </a>
                                 @endforeach
                             </div>
@@ -54,7 +57,7 @@
                             {{ locale() == 'en' ? 'SAR' : 'ريال سعودي ' }}</span>
                         {!! $product['description_' . locale()] !!}
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
-                            
+
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tab1" role="tab">
                                     {{ locale() == 'en' ? 'Key Features' : 'المميزات الاساسية' }}
@@ -72,7 +75,7 @@
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            
+
                             <div class="tab-pane fade show active" id="tab1" role="tabpanel">
                                 {!! $product['features_' . locale()] !!}
                             </div>
@@ -189,8 +192,10 @@
                                         <div class="product_item">
                                             <a href="{{ route('site.store.accessory', ['slug' => $accessory['slug']]) }}"
                                                 class="img_link">
-                                                <img src="{{ $accessory['image_path'] }}" class="front" />
-                                                <img src="{{ $accessory['image_path'] }}" class="back" />
+                                                <img src="{{ $accessory['image_path'] }}" class="front"
+                                                    alt="{{ $accessory['name_' . locale()] }}" />
+                                                <img src="{{ $accessory['image_path'] }}" class="back"
+                                                    alt="{{ $accessory['name_' . locale()] }}" />
                                             </a>
                                             <a href="{{ route('site.store.accessory', ['slug' => $accessory['slug']]) }}">{{ $accessory['name_' . locale()] }}
                                             </a>

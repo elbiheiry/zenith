@@ -4,6 +4,17 @@
     @method('put')
     <div class="modal-body text-center">
         <div class="row">
+            <div class="col-12">
+                <img src="{{ $work['image'] }}" width="150">
+            </div>
+            <div class="col-12">
+                <div class="form-group">
+                    <label>Image </label>
+                    <input type="file" class="jfilestyle" name="image" />
+                </div>
+                <span class="text-danger">Image dimensions should be : 128 * 128
+                </span>
+            </div>
             <div class="col-sm-12">
                 <div class="form-group">
                     <label>Title (EN)</label>

@@ -22,6 +22,14 @@
                     @csrf
                     <div class="col-sm-6">
                         <div class="form-group">
+                            <label>Image </label>
+                            <input type="file" class="jfilestyle" name="image" />
+                        </div>
+                        <span class="text-danger">Image dimensions should be : 128 * 128
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
                             <label>Title (EN)</label>
                             <input type="text" class="form-control" name="title_en">
                         </div>

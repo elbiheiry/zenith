@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Delivery & Shipping Policy' : 'سياسة التوصيل والشحن' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">

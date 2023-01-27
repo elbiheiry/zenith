@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Search results' : 'نتائج البحث' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -21,8 +24,10 @@
                     <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="40">
                         <div class="product_item">
                             <a href="{{ route('site.store.product', ['slug' => $product['slug']]) }}" class="img_link">
-                                <img src="{{ $product['image_path'] }}" class="front" />
-                                <img src="{{ $product['image_path'] }}" class="back" />
+                                <img src="{{ $product['image_path'] }}" class="front"
+                                    alt="{{ $product['name_' . locale()] }}" />
+                                <img src="{{ $product['image_path'] }}" class="back"
+                                    alt="{{ $product['name_' . locale()] }}" />
                             </a>
                             <a href="{{ route('site.store.product', ['slug' => $product['slug']]) }}">
                                 {{ $product['name_' . locale()] }} </a>

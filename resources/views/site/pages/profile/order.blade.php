@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Order history' : 'الطلبات' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -28,12 +31,14 @@
                             @foreach ($order['items_data'] as $index => $item)
                                 <div class="order">
                                     <div class="cont">
-                                        <img src="{{ $item['attributes']['image'] }}" />
+                                        <img src="{{ $item['attributes']['image'] }}"
+                                            alt="{{ $item['attributes']['name_' . locale()] }}" />
                                         <h4>
                                             <strong>
                                                 {{ $item['attributes']['name_' . locale()] }}</strong>
                                             <span> {{ $item['quantity'] }} X </span>
-                                            <span>{{ $item['price'] }} {{ locale() == 'en' ? 'SAR' : 'ريال سعودي' }}</span>
+                                            <span>{{ $item['price'] }}
+                                                {{ locale() == 'en' ? 'SAR' : 'ريال سعودي' }}</span>
 
                                         </h4>
                                     </div>

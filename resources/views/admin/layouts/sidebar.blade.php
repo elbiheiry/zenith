@@ -19,7 +19,7 @@
             </a>
         </li>
         <li
-            class="sub-menu {{ request()->routeIs('admin.home.index') || request()->routeIs('admin.sliders.index') ? 'active' : '' }}">
+            class="sub-menu {{ request()->routeIs('admin.home.index') || request()->routeIs('admin.work.index') || request()->routeIs('admin.sliders.index') ? 'active' : '' }}">
             <a rel="noreferrer" href="javascript:void(0);">
                 - Home page
                 <i class="fa fa-angle-down"></i>
@@ -33,6 +33,11 @@
                 <li class="{{ request()->routeIs('admin.home.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.home.index') }}">
                         Content
+                    </a>
+                </li>
+                <li class="{{ request()->routeIs('admin.work.index') ? 'active' : '' }}">
+                    <a href="{{ route('admin.work.index') }}">
+                        How it works
                     </a>
                 </li>
             </ul>
@@ -157,7 +162,7 @@
             </ul>
         </li>
         <li
-            class="sub-menu {{ request()->routeIs('admin.content.index') || request()->routeIs('admin.work.index') || (request()->routeIs('admin.offers.index') && request()->type == 'parents') ? 'active' : '' }}">
+            class="sub-menu {{ request()->routeIs('admin.content.index') || (request()->routeIs('admin.offers.index') && request()->type == 'parents') ? 'active' : '' }}">
             <a rel="noreferrer" href="javascript:void(0);">
                 - For parents
                 <i class="fa fa-angle-down"></i>
@@ -171,12 +176,6 @@
                 <li class="{{ request()->routeIs('admin.offers.index') ? 'active' : '' }}">
                     <a href="{{ route('admin.offers.index', ['type' => 'parents']) }}">
                         Benefits
-                    </a>
-                </li>
-
-                <li class="{{ request()->routeIs('admin.work.index') ? 'active' : '' }}">
-                    <a href="{{ route('admin.work.index') }}">
-                        How it works
                     </a>
                 </li>
             </ul>

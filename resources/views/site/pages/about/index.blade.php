@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'About us' : 'من نحن' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -35,7 +38,8 @@
                 </div>
                 <!--End Col-->
                 <div class="col-lg-5" data-aos="fade-up" data-aos-delay="30">
-                    <img src="{{ $about['image1_path'] }}" class="tilt custom_img" alt="" />
+                    <img src="{{ $about['image1_path'] }}" class="tilt custom_img"
+                        alt="{{ $about['subtitle_' . locale()] }}" />
                 </div>
             </div>
             <!--End Row-->
@@ -58,7 +62,8 @@
                         @if (auth()->guard('site')->guest())
                             <a href="{{ route('site.school') }}" class="link aos-init aos-animate" data-aos="fade-up"
                                 data-aos-delay="90">
-                                <span> {{ locale() == 'en' ? 'Register Your School' : 'قم بتسجيل مدرستك الاّن ' }} ! </span>
+                                <span> {{ locale() == 'en' ? 'Register Your School' : 'قم بتسجيل مدرستك الاّن ' }} !
+                                </span>
                             </a>
                         @endif
                     </div>
@@ -74,7 +79,7 @@
         <div class="container">
             <div class="row position-relative">
                 <div class="col-lg-5 cover" data-aos="fade-up" data-aos-delay="30">
-                    <img src="{{ $about['image2_path'] }}" class="tilt" alt="" />
+                    <img src="{{ $about['image2_path'] }}" class="tilt" alt="{{ $about['title2_' . locale()] }}" />
                 </div>
                 <div class="col-lg-7">
                     <div class="cont">

@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Children' : 'الأبناء' }}
+@endpush
 @push('models')
     <div class="modal fade" id="common-modal" tabindex="-1" role="dialog" aria-hidden="true" style="z-index: 9999;">
         <div class="modal-dialog" role="document" id="edit-area">
@@ -118,13 +121,13 @@
                                                         <td>
                                                             <button class="icon btn-modal-view"
                                                                 data-url="{{ route('site.profile.child.edit', ['id' => $child['id']]) }}">
-                                                              
-                                                                    <i class="far fa-edit"></i>
+
+                                                                <i class="far fa-edit"></i>
                                                             </button>
                                                             <a class="icon" style="background-color: #d50c0c;"
                                                                 href="{{ route('site.profile.child.remove', ['id' => $child['id']]) }}">
-                                                                   <i class="far fa-trash-alt"></i>
-                                                             </a>
+                                                                <i class="far fa-trash-alt"></i>
+                                                            </a>
                                                         </td>
                                                     </tr>
                                                     @php

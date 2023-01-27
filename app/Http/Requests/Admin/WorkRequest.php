@@ -39,6 +39,7 @@ class WorkRequest extends FormRequest
     public function rules()
     {
         return [
+            'image' => $this->isMethod('post') ? ['required' , 'image' , 'mimes:png,jpg,jpeg' ,'max:2048'] : ['image' , 'mimes:png,jpg,jpeg' ,'max:2048'],
             'title_en' => ['required' , 'string' , 'max:255'],
             'title_ar' => ['required' , 'string' , 'max:255'],
             'subtitle_en' => ['required' , 'string' , 'max:255'],
@@ -49,6 +50,7 @@ class WorkRequest extends FormRequest
     public function attributes()
     {
         return [
+            'image' => 'Image',
             'title_en' => 'Title (EN)',
             'title_ar' => 'Title (AR)',
             'subtitle_en' => 'Subtitle (EN)',

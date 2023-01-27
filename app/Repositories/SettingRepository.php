@@ -26,10 +26,14 @@ class SettingRepository
         $settings = $this->model->firstOrFail();
         $data = [
             'en' => [
-                'address' => $request['address_en']
+                'address' => $request['address_en'],
+                'meta_keywords' => $request['meta_keywords_en'],
+                'meta_description' => $request['meta_description_en']
             ],
             'ar' => [
-                'address' => $request['address_ar']
+                'address' => $request['address_ar'],
+                'meta_keywords' => $request['meta_keywords_ar'],
+                'meta_description' => $request['meta_description_ar']
             ],
             'email' => $request['email'],
             'phone' => $request['phone'],

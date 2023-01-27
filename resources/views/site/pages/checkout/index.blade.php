@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Checkout' : 'الدفع' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -31,7 +34,8 @@
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-group">
                                     <label> {{ locale() == 'en' ? 'Phone Number' : 'رقم الجوال' }} <sup>*</sup> </label>
-                                    <input class="form-control" type="text" name="phone" value="{{ $user->phone }}" />
+                                    <input class="form-control" type="text" name="phone"
+                                        value="{{ $user->phone }}" />
                                 </div>
                             </div>
 
@@ -105,7 +109,8 @@
                         </div>
                         @foreach ($items as $item)
                             <div class="cart_item">
-                                <img src="{{ $item['attributes']['image'] }}" />
+                                <img src="{{ $item['attributes']['image'] }}"
+                                    alt="{{ $item['attributes']['name_' . locale()] }}" />
                                 <div class="cart_item_details">
                                     @if ($item->associatedModel == 'product')
                                         <a href="{{ route('site.store.product', ['slug' => $item['attributes']['slug']]) }}"

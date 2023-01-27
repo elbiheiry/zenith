@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Terms and conditions' : 'الشروط والاحكام' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">

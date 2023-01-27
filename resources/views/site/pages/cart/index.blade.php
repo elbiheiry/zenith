@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Cart' : 'سلة المشتريات' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -22,7 +25,8 @@
                             <div class="cart_item">
                                 <button class="icon fa fa-times delete-cart-btn"
                                     data-url="{{ route('site.cart.delete', ['id' => $item->id]) }}"></button>
-                                <img src="{{ $item['attributes']['image'] }}" />
+                                <img src="{{ $item['attributes']['image'] }}"
+                                    alt="{{ $item['attributes']['name_' . locale()] }}" />
                                 <form class="cart_item_details" id="update_cart_{{ $item->id }}" method="put"
                                     action="{{ route('site.cart.update') }}">
                                     @csrf

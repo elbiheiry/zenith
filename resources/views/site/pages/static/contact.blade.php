@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Contact us' : 'تواصل معنا' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -23,18 +26,18 @@
                         <li>
                             <i class="fa fa-map-marker-alt"></i>
                             <a href="javascript:void(0)">
-                                6367 Al Ulaya 2716 Riyadh 12251
+                                {{ $settings['address_' . locale()] }}
                             </a>
                         </li>
                         <li>
                             <i class="far fa-envelope"></i>
-                            <a href="mailto:info@zenitharabia.com">
-                                info@zenitharabia.com
+                            <a href="mailto:{{ $settings['email'] }}">
+                                {{ $settings['email'] }}
                             </a>
                         </li>
                         <li>
                             <i class="fa fa-phone"></i>
-                            <a href="tel:+966114192270"> +966 (11) 4192270 </a>
+                            <a href="tel:{{ $settings['phone'] }}"> {{ $settings['phone'] }} </a>
                         </li>
                     </ul>
                     <ul class="social">

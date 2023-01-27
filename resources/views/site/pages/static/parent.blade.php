@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Parental Program' : 'البرنامج الأبوي' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -32,7 +35,8 @@
                 </div>
                 <!--End Col-->
                 <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="30">
-                    <img src="{{ $content['image_path'] }}" class="tilt custom_img" alt=""
+                    <img src="{{ $content['image_path'] }}" class="tilt custom_img"
+                        alt="{{ $content['title_' . locale()] }}"
                         style="will-change: transform; transform: perspective(900px) rotateX(0deg) rotateY(0deg);">
                 </div>
             </div>
@@ -52,7 +56,7 @@
                 @foreach ($offers['data'] as $offer)
                     <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="60">
                         <div class="benefit small tilt">
-                            <img src="{{ $offer['image_path'] }}" />
+                            <img src="{{ $offer['image_path'] }}" alt="{{ $offer['title_' . locale()] }}" />
                             <h3>{{ $offer['title_' . locale()] }}</h3>
                         </div>
                         <!--End Benefit-->
@@ -198,7 +202,7 @@
                     <div class="col-lg-3 col-md-4 col-sm-4 col-6" data-aos="fade-up"
                         data-aos-delay="{{ $x }}">
                         <div class="partner_item">
-                            <img src="{{ $school['image_path'] }}" alt="" />
+                            <img src="{{ $school['image_path'] }}" alt="{{ $school['name_' . locale()] }}" />
                         </div>
                     </div>
                     @php

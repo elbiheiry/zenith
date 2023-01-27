@@ -1,11 +1,14 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ $school->translate(locale())->name }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
             <div class="row">
                 <div class="col-12 d-flex center_content">
                     <div class="img_list">
-                        <img src="{{ $school->logo }}" />
+                        <img src="{{ $school->logo }}" alt="{{ $school->translate(locale())->name }}" />
                     </div>
                     <ul>
                         <li><a href="{{ route('site.index') }}">{{ locale() == 'en' ? 'Home' : 'الرئيسية' }} </a></li>
@@ -21,9 +24,9 @@
                 @foreach ($bundles['data'] as $bundle)
                     <div class="col-sm-6" data-aos="fade-up" data-aos-delay="40">
                         <div class="product_item">
-                            <a href="{{ route('site.store.bundle', ['slug' => $bundle['slug']]) }}" class="img_link"><img
-                                    src="{{ $bundle['image'] }}" /></a>
-
+                            <a href="{{ route('site.store.bundle', ['slug' => $bundle['slug']]) }}" class="img_link">
+                                <img src="{{ $bundle['image'] }}" alt="{{ $bundle['name_' . locale()] }}" />
+                            </a>
                             <a href="{{ route('site.store.bundle', ['slug' => $bundle['slug']]) }}">
                                 {{ $bundle['name_' . locale()] }} </a>
                             <p>{{ $bundle['price'] }} {{ locale() == 'en' ? 'SAR' : 'ريال سعودي' }}</p>
@@ -39,8 +42,10 @@
                     <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="40">
                         <div class="product_item">
                             <a href="{{ route('site.store.product', ['slug' => $product['slug']]) }}" class="img_link">
-                                <img src="{{ $product['image_path'] }}" class="front" />
-                                <img src="{{ $product['image_path'] }}" class="back" />
+                                <img src="{{ $product['image_path'] }}" class="front"
+                                    alt="{{ $product['name_' . locale()] }}" />
+                                <img src="{{ $product['image_path'] }}" class="back"
+                                    alt="{{ $product['name_' . locale()] }}" />
                             </a>
                             <a href="{{ route('site.store.product', ['slug' => $product['slug']]) }}">
                                 {{ $product['name_' . locale()] }} </a>
@@ -54,8 +59,10 @@
                     <div class="col-lg-4 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="40">
                         <div class="product_item">
                             <a href="{{ route('site.store.accessory', ['slug' => $accessory['slug']]) }}" class="img_link">
-                                <img src="{{ $accessory['image_path'] }}" class="front" />
-                                <img src="{{ $accessory['image_path'] }}" class="back" />
+                                <img src="{{ $accessory['image_path'] }}" class="front"
+                                    alt="{{ $accessory['name_' . locale()] }}" />
+                                <img src="{{ $accessory['image_path'] }}" class="back"
+                                    alt="{{ $accessory['name_' . locale()] }}" />
                             </a>
                             <a href="{{ route('site.store.accessory', ['slug' => $accessory['slug']]) }}">
                                 {{ $accessory['name_' . locale()] }} </a>

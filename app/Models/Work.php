@@ -13,4 +13,13 @@ class Work extends Model implements TranslatableContract
     use HasFactory , Translatable , ImageTrait;
 
     public $translatedAttributes = ['title' , 'subtitle'];
+
+    protected $fillable = ['image'];
+
+    public function delete()
+    {
+        $this->image_delete($this->image , 'works');
+
+        return parent::delete();
+    }
 }

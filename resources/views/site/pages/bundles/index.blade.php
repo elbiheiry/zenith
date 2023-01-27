@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ $bundle['name_' . locale()] }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -21,7 +24,7 @@
                             <div class="swiper-wrapper">
                                 @foreach ($images['data'] as $image)
                                     <a href="{{ $image['image_path'] }}" class="swiper-slide" data-fancybox="gallery">
-                                        <img src="{{ $image['image_path'] }}" />
+                                        <img src="{{ $image['image_path'] }}" alt="{{ $bundle['name_' . locale()] }}" />
                                     </a>
                                 @endforeach
 
@@ -33,7 +36,7 @@
                             <div class="swiper-wrapper">
                                 @foreach ($images['data'] as $image)
                                     <div class="swiper-slide">
-                                        <img src="{{ $image['image_path'] }}" />
+                                        <img src="{{ $image['image_path'] }}" alt="{{ $bundle['name_' . locale()] }}" />
                                     </div>
                                 @endforeach
                             </div>
@@ -114,18 +117,20 @@
         <!--End Container-->
     </section>
     <!--End Section-->
-    <!--@if (sizeof($bundle['accessories']['data']) > 0)-->
+    <!--@if (sizeof($bundle['accessories']['data']) > 0)
+    -->
     <!--    <section class="colored">-->
     <!--        <div class="container">-->
     <!--            <div class="row">-->
     <!--                <div class="col-12">-->
     <!--                    <h3 class="head_tit">{{ locale() == 'en' ? 'RELATED ACCESSORIES' : 'الإكسسوارات المتعلقة' }}</h3>-->
     <!--                </div>-->
-                    <!--End Col-->
+    <!--End Col-->
     <!--                <div class="col-12">-->
     <!--                    <div class="swiper related_slider">-->
     <!--                        <div class="swiper-wrapper">-->
-    <!--                            @foreach ($bundle['accessories']['data'] as $accessory)-->
+    <!--                            @foreach ($bundle['accessories']['data'] as $accessory)
+    -->
     <!--                                <div class="swiper-slide">-->
     <!--                                    <div class="product_item">-->
     <!--                                        <a href="{{ route('site.store.accessory', ['slug' => $accessory['accessory']['slug']]) }}"-->
@@ -140,17 +145,19 @@
     <!--                                            {{ locale() == 'en' ? 'SAR' : 'ريال سعودي ' }}</p>-->
     <!--                                    </div>-->
     <!--                                </div>-->
-    <!--                            @endforeach-->
+    <!--
+    @endforeach-->
     <!--                        </div>-->
     <!--                    </div>-->
     <!--                    <div class="swiper-pagination"></div>-->
     <!--                </div>-->
     <!--            </div>-->
-                <!--End Col-->
+    <!--End Col-->
     <!--        </div>-->
-            <!--End Container-->
+    <!--End Container-->
     <!--    </section>-->
-    <!--@endif-->
+    <!--
+    @endif-->
     <!--End Section-->
 @endsection
 @push('js')

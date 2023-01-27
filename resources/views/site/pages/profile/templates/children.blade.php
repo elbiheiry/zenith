@@ -45,12 +45,12 @@
     <div class="modal-footer text-center">
         <button class="link" type="submit">
             <span>
-            {{ locale() == 'en' ? 'Save Changes' : 'حفظ التغييرات' }} <i class="fa fa-long-arrow-alt-right"></i>
+                {{ locale() == 'en' ? 'Save Changes' : 'حفظ التغييرات' }} <i class="fa fa-long-arrow-alt-right"></i>
             </span>
         </button>
         <button type="button" class="link" style="background-color: #d50c0c;" data-dismiss="modal">
             <span>
-            {{ locale() == 'en' ? 'Close' : 'إغلاق' }} <i class="fa fa-times"></i>
+                {{ locale() == 'en' ? 'Close' : 'إغلاق' }} <i class="fa fa-times"></i>
             </span>
         </button>
     </div>

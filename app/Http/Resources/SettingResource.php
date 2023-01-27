@@ -25,7 +25,11 @@ class SettingResource extends JsonResource
             'instagram' => $this->instagram,
             'map' => $this->map,
             'address_en' => $this->translate('en')->address,
-            'address_ar' => $this->translate('ar')->address
+            'address_ar' => $this->translate('ar')->address,
+            'meta_keywords_en' => $this->translate('en')->meta_keywords,
+            'meta_keywords_ar' => $this->translate('ar')->meta_keywords,
+            'meta_description_en' => $this->translate('en')->meta_description,
+            'meta_description_ar' => $this->translate('ar')->meta_description,
         ];
     }
 }

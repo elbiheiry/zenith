@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ locale() == 'en' ? 'Parental Purchase Program' : 'برنامج شراء الوالدين' }}
+@endpush
 @section('content')
     <section class="page_head" id="home">
         <div class="container">
@@ -33,7 +36,7 @@
                 </div>
                 <!--End Col-->
                 <div class="col-lg-6 aos-init aos-animate" data-aos="fade-up" data-aos-delay="30">
-                    <img src="{{ $parent['image1_path'] }}" class="tilt custom_img" alt=""
+                    <img src="{{ $parent['image1_path'] }}" class="tilt custom_img" alt="{{ $parent['title_' . locale()] }}"
                         style="will-change: transform; transform: perspective(900px) rotateX(0deg) rotateY(0deg);">
                 </div>
             </div>
@@ -53,7 +56,7 @@
                 @foreach ($offers['data'] as $offer)
                     <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="60">
                         <div class="benefit small tilt">
-                            <img src="{{ $offer['image_path'] }}" />
+                            <img src="{{ $offer['image_path'] }}" alt="{{ $offer['title_' . locale()] }}" />
                             <h3>{{ $offer['title_' . locale()] }}</h3>
                         </div>
                         <!--End Benefit-->
@@ -85,7 +88,7 @@
                     </div>
                 </div>
                 <div class="col-lg-5" data-aos="fade-up" data-aos-delay="60">
-                    <img src="{{ $parent['image2_path'] }}" class="tilt custom_img" alt="" />
+                    <img src="{{ $parent['image2_path'] }}" class="tilt custom_img" alt="{!! $parent['description2_' . locale()] !!}" />
                 </div>
             </div>
             <!--End Row-->
@@ -107,7 +110,7 @@
                 @foreach ($schools['data'] as $school)
                     <div class="col-lg-3 col-md-4 col-sm-4 col-6" data-aos="fade-up" data-aos-delay="{{ $x }}">
                         <div class="partner_item">
-                            <img src="{{ $school['image_path'] }}" alt="" />
+                            <img src="{{ $school['image_path'] }}" alt="{{ $school['name_' . locale()] }}" />
                         </div>
                     </div>
                     @php

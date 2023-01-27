@@ -1,4 +1,7 @@
 @extends('site.layouts.master')
+@push('title')
+    {{ $accessory['name_' . locale()] }}
+@endpush
 @push('css')
     <link rel="stylesheet" href="{{ surl('vendor/swiper.css') }}" />
 @endpush
@@ -24,11 +27,11 @@
                         <div class="swiper mySwiper2">
                             <div class="swiper-wrapper">
                                 <a href="{{ $accessory['image_path'] }}" class="swiper-slide" data-fancybox="gallery">
-                                    <img src="{{ $accessory['image_path'] }}" />
+                                    <img src="{{ $accessory['image_path'] }}" alt="{{ $accessory['name_' . locale()] }}" />
                                 </a>
                                 @foreach ($images['data'] as $image)
                                     <a href="{{ $image['image_path'] }}" class="swiper-slide" data-fancybox="gallery">
-                                        <img src="{{ $image['image_path'] }}" />
+                                        <img src="{{ $image['image_path'] }}" alt="{{ $accessory['name_' . locale()] }}" />
                                     </a>
                                 @endforeach
                             </div>
@@ -38,89 +41,96 @@
                         <div thumbsSlider="" class="swiper mySwiper">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img src="{{ $accessory['image_path'] }}" />
+                                    <img src="{{ $accessory['image_path'] }}"
+                                        alt="{{ $accessory['name_' . locale()] }}" />
                                 </div>
                                 @foreach ($images['data'] as $image)
                                     <div class="swiper-slide">
-                                        <img src="{{ $image['image_path'] }}" />
+                                        <img src="{{ $image['image_path'] }}"
+                                            alt="{{ $accessory['name_' . locale()] }}/>
                                     </div>
-                                @endforeach
+@endforeach
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="product_details">
-                        <h2>{{ $accessory['name_' . locale()] }} </h2>
-                        <span class="price">{{ $accessory['specifications']['data'][0]['price'] }}
-                            {{ locale() == 'en' ? 'SAR' : 'ريال سعودي ' }}</span>
-                        @foreach (explode("\n", $accessory['overview_' . locale()]) as $item)
-                            <p>{{ $item }}</p>
-                        @endforeach
+                                        <div class="product_details">
+                                            <h2>{{ $accessory['name_' . locale()] }} </h2>
+                                            <span class="price">{{ $accessory['specifications']['data'][0]['price'] }}
+                                                {{ locale() == 'en' ? 'SAR' : 'ريال سعودي ' }}</span>
+                                            @foreach (explode("\n", $accessory['overview_' . locale()]) as $item)
+                                                <p>{{ $item }}</p>
+                                            @endforeach
 
-                        @if ($accessory['description_' . locale()])
-                            <h4>{{ locale() == 'en' ? 'Technical Specifications' : 'المواصفات التقنية' }}</h4>
-                            {!! $accessory['description_' . locale()] !!}
-                        @endif
+                                            @if ($accessory['description_' . locale()])
+                                                <h4>{{ locale() == 'en' ? 'Technical Specifications' : 'المواصفات التقنية' }}
+                                                </h4>
+                                                {!! $accessory['description_' . locale()] !!}
+                                            @endif
 
-                        <form method="post"
-                            action="{{ route('site.store.accessory.cart.add', ['id' => $accessory['id']]) }}"
-                            class="add-to-cart">
-                            @csrf
-                            <input type="hidden" name="sku" id="sku-input"
-                                value="{{ $accessory['specifications']['data'][0]['sku'] }}">
-                            <span class="price price2">{{ $accessory['specifications']['data'][0]['price'] }}
-                                {{ locale() == 'en' ? 'SAR' : 'ريال سعودي ' }}</span>
-                            @if (sizeof($allColors) > 0)
-                                <div class="form-group">
-                                    <label class="d-block"> {{ locale() == 'en' ? 'Colors' : 'الألوان' }}
-                                    </label>
-                                    @foreach ($allColors as $index => $color)
-                                        <div class="check_list">
-                                            <input type="radio" id="{{ $color['color_name'] }}" name="color_id"
-                                                value="{{ $color['color_id'] }}"
-                                                {{ $color['color_id'] == $accessory['specifications']['data'][0]['color_id'] ? 'checked' : '' }} />
-                                            <label for="{{ $color['color_name'] }}">
-                                                <span> {{ $color['color_name'] }} </span>
-                                            </label>
+                                            <form method="post"
+                                                action="{{ route('site.store.accessory.cart.add', ['id' => $accessory['id']]) }}"
+                                                class="add-to-cart">
+                                                @csrf
+                                                <input type="hidden" name="sku" id="sku-input"
+                                                    value="{{ $accessory['specifications']['data'][0]['sku'] }}">
+                                                <span
+                                                    class="price price2">{{ $accessory['specifications']['data'][0]['price'] }}
+                                                    {{ locale() == 'en' ? 'SAR' : 'ريال سعودي ' }}</span>
+                                                @if (sizeof($allColors) > 0)
+                                                    <div class="form-group">
+                                                        <label class="d-block">
+                                                            {{ locale() == 'en' ? 'Colors' : 'الألوان' }}
+                                                        </label>
+                                                        @foreach ($allColors as $index => $color)
+                                                            <div class="check_list">
+                                                                <input type="radio" id="{{ $color['color_name'] }}"
+                                                                    name="color_id" value="{{ $color['color_id'] }}"
+                                                                    {{ $color['color_id'] == $accessory['specifications']['data'][0]['color_id'] ? 'checked' : '' }} />
+                                                                <label for="{{ $color['color_name'] }}">
+                                                                    <span> {{ $color['color_name'] }} </span>
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                                @if (sizeof($allLanguages) > 0)
+                                                    <div class="form-group">
+                                                        <label class="d-block">
+                                                            {{ locale() == 'en' ? 'Locales' : 'اللغات' }}
+                                                        </label>
+                                                        @foreach ($allLanguages as $index => $language)
+                                                            <div class="check_list">
+                                                                <input type="radio" id="{{ $language['locale'] }}"
+                                                                    name="locale" value="{{ $language['locale'] }}"
+                                                                    {{ $language['locale'] == $accessory['specifications']['data'][0]['locale'] ? 'checked' : '' }} />
+                                                                <label for="{{ $language['locale'] }}">
+                                                                    <span> {{ $language['locale'] }} </span>
+                                                                </label>
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                @endif
+                                                <div class="action d-flex">
+                                                    <div class="cat-number">
+                                                        <a href="#" class="number-down">
+                                                            <i class="fa fa-angle-down"></i>
+                                                        </a><input value="1" class="form-control" type="number"
+                                                            name="quantity" />
+                                                        <a href="#" class="number-up">
+                                                            <i class="fa fa-angle-up"></i>
+                                                        </a>
+                                                    </div>
+                                                    <button class="icon fa fa-shopping-cart" id="cartBTN"></button>
+                                                </div>
+                                            </form>
                                         </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                            @if (sizeof($allLanguages) > 0)
-                                <div class="form-group">
-                                    <label class="d-block"> {{ locale() == 'en' ? 'Locales' : 'اللغات' }}
-                                    </label>
-                                    @foreach ($allLanguages as $index => $language)
-                                        <div class="check_list">
-                                            <input type="radio" id="{{ $language['locale'] }}" name="locale"
-                                                value="{{ $language['locale'] }}"
-                                                {{ $language['locale'] == $accessory['specifications']['data'][0]['locale'] ? 'checked' : '' }} />
-                                            <label for="{{ $language['locale'] }}">
-                                                <span> {{ $language['locale'] }} </span>
-                                            </label>
-                                        </div>
-                                    @endforeach
-                                </div>
-                            @endif
-                            <div class="action d-flex">
-                                <div class="cat-number">
-                                    <a href="#" class="number-down">
-                                        <i class="fa fa-angle-down"></i>
-                                    </a><input value="1" class="form-control" type="number" name="quantity" />
-                                    <a href="#" class="number-up">
-                                        <i class="fa fa-angle-up"></i>
-                                    </a>
-                                </div>
-                                <button class="icon fa fa-shopping-cart" id="cartBTN"></button>
+                                    </div>
                             </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--End Row-->
-        </div>
-        <!--End Container-->
+                            <!--End Row-->
+                        </div>
+                        <!--End Container-->
     </section>
     <!--End Section-->
     @if (sizeof($relates['data']) > 0)
@@ -139,10 +149,12 @@
                                         <div class="product_item">
                                             <a href="{{ route('site.store.accessory', ['slug' => $relate['slug']]) }}"
                                                 class="img_link">
-                                                <img src="{{ $relate['image_path'] }}" class="front" />
-                                                <img src="{{ $relate['image_path'] }}" class="back" />
+                                                <img src="{{ $relate['image_path'] }}" class="front"
+                                                    alt="{{ $relate['name_' . locale()] }}" />
+                                                <img src="{{ $relate['image_path'] }}" class="back"
+                                                    alt="{{ $relate['name_' . locale()] }}" />
                                             </a>
-                                            <a href="{{ route('site.store.accessory', ['slug' => $relate['slug']]) }}">{{ $relate['name_en'] }}
+                                            <a href="{{ route('site.store.accessory', ['slug' => $relate['slug']]) }}">{{ $relate['name_' . locale()] }}
                                             </a>
                                             <p>{{ $relate['specifications']['data'][0]['price'] }}
                                                 {{ locale() == 'en' ? 'SAR' : 'ريال سعودي ' }}</p>

@@ -4,9 +4,12 @@ namespace App\Repositories;
 
 use App\Http\Resources\WorkResource;
 use App\Models\Work;
+use App\Traits\ImageTrait;
 
 class WorkRepository 
 {
+    use ImageTrait;
+
     public $model;
 
     public function __construct(Work $model)
@@ -38,7 +41,8 @@ class WorkRepository
             'ar' => [
                 'title' => $data['title_ar'],
                 'subtitle' => $data['subtitle_ar']
-            ]
+            ],
+            'image' => $this->image_manipulate($data['image'] , 'works' , 128 , 128),
         ];
  
         $this->model->create($data);
@@ -58,6 +62,11 @@ class WorkRepository
                 'subtitle' => $request['subtitle_ar']
             ]
         ];
+
+        if ($request['image']) {
+            $this->image_delete($work->image , 'works');
+            $data['image'] = $this->image_manipulate($request['image'] , 'works' , 128 , 128);
+        }
  
         $work->update($data);
     }    

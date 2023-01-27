@@ -9,5 +9,5 @@ class SettingTranslation extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['address' , 'locale' , 'setting_id'];
+    protected $fillable = ['address', 'meta_keywords' ,'meta_description' , 'locale' , 'setting_id'];
 }

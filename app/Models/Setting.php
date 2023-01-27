@@ -15,5 +15,5 @@ class Setting extends Model implements TranslatableContract
         'email' , 'phone' , 'facebook' , 'twitter' , 'linkedin' , 'youtube' , 'instagram' , 'map'
     ];
 
-    public $translatedAttributes = ['address'];
+    public $translatedAttributes = ['address', 'meta_keywords' ,'meta_description'];
 }

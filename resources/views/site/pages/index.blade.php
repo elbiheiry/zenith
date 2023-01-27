@@ -9,7 +9,7 @@
             <div class="carousel-inner">
                 @foreach ($sliders['data'] as $index => $slider)
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-                        <img src="{{ $slider['image_path'] }}">
+                        <img src="{{ $slider['image_path'] }}" alt="{{ $slider['title_' . locale()] }}">
                         <div class="intro_cont">
                             <h2 class="animated" style="animation-delay: 0.5s">
                                 {{ $slider['title_' . locale()] }}
@@ -74,7 +74,7 @@
                 <!--End Col-->
                 <div class="col-lg-5" data-aos="fade-up" data-aos-delay="60">
                     <div class="cover tilt mt-0">
-                        <img src="{{ $home['image_path'] }}" alt="" />
+                        <img src="{{ $home['image_path'] }}" alt="{{ $home['title_' . locale()] }}" />
                     </div>
                 </div>
             </div>
@@ -94,7 +94,7 @@
                 @foreach ($offers['data'] as $offer)
                     <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up" data-aos-delay="60">
                         <div class="benefit small tilt">
-                            <img src="{{ $offer['image_path'] }}" />
+                            <img src="{{ $offer['image_path'] }}" alt="{{ $offer['title_' . locale()] }}" />
                             <h3>{{ $offer['title_' . locale()] }}</h3>
                         </div>
                         <!--End Benefit-->
@@ -113,56 +113,18 @@
                         <h3>{{ locale() == 'en' ? 'How it works' : 'كيف تعمل ' }}</h3>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
+                @foreach ($works['data'] as $work)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
 
-                        <div class="cont">
-                            <img src="{{ surl('images/step1.png') }}" />
-                            <h3>CREATE ACCOUNT</h3>
-                            <p>Fill your contact details with the school registered</p>
+                            <div class="cont">
+                                <img src="{{ $work['image'] }}" alt="{{ $work['title_' . locale()] }}" />
+                                <h3>{{ $work['title_' . locale()] }}</h3>
+                                <p>{{ $work['subtitle_' . locale()] }}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
-
-                        <div class="cont">
-                            <img src="{{ surl('images/step2.png') }}" />
-                            <h3>CHOOSE PRODUCT</h3>
-                            <p>Choose the devices, accessories, and school bundle</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
-
-                        <div class="cont">
-                            <img src="{{ surl('images/step3.png') }}" />
-                            <h3>PAYMENT</h3>
-                            <p>Pay online via desired Method</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
-
-                        <div class="cont">
-                            <img src="{{ surl('images/step4.png') }}" />
-                            <h3>WE PROCESS</h3>
-                            <p>Door to Door Delivery</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-sm-6">
-                    <div class="work_item step" data-aos="fade-up" data-aos-delay="60">
-
-                        <div class="cont">
-                            <img src="{{ surl('images/step5.png') }}" />
-                            <h3>PRODUCT DEVLIVERED</h3>
-                            <p>Start Learning journey with preconfigured devices</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <!--End Row-->
         </div>
@@ -199,7 +161,7 @@
         <div class="container">
             <div class="row position-relative">
                 <div class="col-lg-5 cover" data-aos="fade-up" data-aos-delay="30">
-                    <img src="{{ $about['image2_path'] }}" class="tilt" alt="" />
+                    <img src="{{ $about['image2_path'] }}" class="tilt" alt="{{ $about['title2_' . locale()] }}" />
                 </div>
                 <div class="col-lg-7">
                     <div class="cont">
